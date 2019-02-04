@@ -1,0 +1,122 @@
+%% -*- mode: latex; mode: flyspell -*-
+\documentclass[12pt, letter]{article}
+
+%% Class name and Assignment number
+%%
+\newcommand{\courseName}{ECE 435 Medical~Image~Processing}
+\newcommand{\assignName}{Assignment~3}
+
+%% Packages
+\usepackage{amsmath,amsfonts,amssymb,amsthm,dsfont}
+\usepackage{graphicx}
+\usepackage[bookmarks=false]{hyperref}
+\usepackage{color}
+\usepackage{lipsum}
+\usepackage{amsmath}
+
+%% Paper format
+\usepackage{geometry}
+\geometry{
+    letterpaper,
+    %% total={216mm,279mm}, %< NSERC size
+    margin=2.00cm,     %< default
+    %% margin=1.87cm,       %< NSERC tightest
+}
+
+%% Headers and footers
+\usepackage[explicit]{titlesec}
+\newpagestyle{titlesec_assignment}{
+  \sethead{\courseName}{}{\assignName}\setfoot{}{\thepage}{}
+  \headrule
+  %% \footrule
+}
+
+\begin{document}
+
+%% Set header and footer
+\pagestyle{titlesec_assignment}
+
+%% Title
+\title{\courseName\\\assignName}
+\author{Yiping Wang V00894385}
+\maketitle
+
+\paragraph{Question 5: } Explain why the low MHz range is used in ultrasound imaging
+
+\paragraph{Answer: } The depth of penetration of ultrasound depends on the material and is approximately proportional to frequency for most tissues as follows:
+
+\begin{equation}
+    d_p \approx \frac{L}{2af}
+\end{equation}
+
+where $a$ is an empirical tissue specific coefficient. Therefore, as frequency $f$ increase, the depth of penetration $d_p$ decreases. Although increasing the ultrasound frequency increases spatial resolution, it is more important to reach the required depth to display the anatomical structures of interest.
+
+\paragraph{Question 6:} How much energy is reflected back when an ultrasound pulse passes from muscle to bone? How much is transmitted?
+
+\paragraph{Answer: }
+Suppose the transducer launches acoustic waves are normal to the muscle, so the waves that reflect back is about 180 degree to contribute ultrasound imaging. From Table 4.1, the acoustic impedance $Z_1$ for muscle is $1.70 \times 10^6$, and the acoustic impedance $Z_2$ for bone is in the range of $4.8 \times 10^6 \sim 7.8 \times 10^6$. Therefore, the Reflection coefficient can be calculated as follows:
+
+\begin{equation}
+R = \frac{(Z_1 - Z_2)^2}{(Z_1 + Z_2)^2}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\frac{(1.70 \times 10^6 - 4.8 \times 10^6)^2}{(1.70 \times 10^6 + 4.8 \times 10^6)^2} & \leqslant R \leqslant \frac{(1.70 \times 10^6 - 7.8 \times 10^6)^2}{(1.70 \times 10^6 + 7.8 \times 10^6)^2} \\
+0.227 & \leqslant R \leqslant 0.412 \\
+\end{split}
+\end{equation}
+
+Suppose the energy of the incident acoustic waves are $I$. Hence, the energy of the reflect back ultrasound pulse $I_{r}$ is in the following range:
+
+\begin{equation}
+0.227I \leqslant I_{r} \leqslant 0.412I\\
+\end{equation}
+
+The energy of the transmitted ultrasound pulse $I_t$ is in the following range:
+
+\begin{equation}
+0.588I \leqslant I_{t} \leqslant 0.773I\\
+\end{equation}
+
+\paragraph{Question 7: } An ultrasound pulse passes through soft tissue and reflects off an interface, producing an echo 0.1 ms later. How deep is the reflecting interface?
+
+\paragraph{Answer: } The velocity of ultrasound pulse is $1540 ms^{-1}$ in soft tissues. We also know that $0.1ms = 10^{-4}s$. Denote the depth of the reflecting surface as $d$.
+
+\begin{equation}
+\begin{split}
+        d & = \frac{v\times t}{2} \\
+          & = \frac{1540 ms^{-1} \times 10^{-4}s}{2} \\
+          & = 0.077m
+\end{split}
+\end{equation}
+
+Hence, the depth of the reflecting surface is $0.077 m$.
+
+\paragraph{Question 8:} If the delay between successive ultrasound pulses is $0.5 ms$, what is the maximum range over which the system can successfully produce images, assuming the speed of the pulses in soft tissue is $1540 ms^{-1}$. Note: The echo from one pulse should be received before the transmission of the next.
+
+\paragraph{Answer: }The pulse repetition interval $T_R$ has a lower bound given by the round trip time to the depth of penetration as follows:
+
+\begin{equation}
+    T_R \geqslant \frac{2 \times d_p}{c}
+\end{equation}
+
+where $d_p$ denotes the depth of penetration and $c$ denotes the speed of ultrasound pulse. By some simple algebra, we derive:
+
+\begin{equation}
+    \begin{split}
+            d_p & \leqslant \frac{c \times T_R}{2} \\
+                & \leqslant \frac{1540 ms^{-1} \times 0.5 \times 10^{-3}s}{2} \\
+                & \leqslant 0.385 m \\
+    \end{split}
+\end{equation}
+
+Therefore, the maximum range over which the system can successfully produce images is $0.385m$.
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
