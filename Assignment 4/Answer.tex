@@ -52,12 +52,12 @@
 \paragraph{Answer:}
 The following results are obtained when tolerance is set to $\mathbf{10^{-8}}$. The initial estimate of the threshold is randomly selected from the element of the image.  
 
-The binarized image with threshold at convergence of $\mathbf{103.9122}$ and the histogram of ``angiogram.tif'' image with the threshold at convergence of $\mathbf{103.9122}$ shows in Figure~\ref{fig:q2-1}. Table~1 shows the value of the threshold at every iteration before reaching convergence.
+The binarized image with threshold at convergence of $\mathbf{103.9122}$, the histogram of ``angiogram.tif'' image with the threshold at convergence of $\mathbf{103.9122}$ and the histogram of number of binary values are shown in Figure~\ref{fig:q2-1}. Table~1 shows the value of the threshold at every iteration before reaching convergence.
 
 \begin{figure}
     \centering
-    \includegraphics[width=14cm]{q2-1.png}
-    \caption{Binarized Image and Its Histogram when Threshold at Convergence of 103.9122}
+    \includegraphics[width=14cm]{without-histogram-equalization.png}
+    \caption{(a) Binarized Image; (b) ``angiogram.tif'' Image Histogram when Threshold at Convergence of 103.9122, Red Line Marks the Threshold at Convergence; (c) Histogram of Number of Binary Values}
     \label{fig:q2-1}
 \end{figure}
 
@@ -68,66 +68,37 @@ The binarized image with threshold at convergence of $\mathbf{103.9122}$ and the
 \cmidrule(r){1-2}
 Iteration   & Threshold Value \\
 \midrule
-1      & 43 \\
-2 & 71.4590 \\
-3  & 82.2945 \\
-4     & 88.1546 \\
-5 & 92.6288 \\
-6 & 95.8906 \\
-7 & 97.8611 \\
-8 & 97.8611 \\
-9 & 99.3100 \\
-10 & 100.7898 \\
-11 & 101.6115 \\
-12 & 102.3741 \\
-13 & 103.1515 \\
-14 & 103.9122 \\
+1      & 89 \\
+2 & 93.4788 \\
+3  & 96.4683 \\
+4     & 98.5574 \\
+5 & 100.0893 \\
+6 & 101.6115 \\
+7 & 102.3741 \\
+8 & 103.1515 \\
+9 & 103.9122 \\
 \bottomrule
 \label{table:q2-1}
 \end{tabular}    
 \end{center}
 
-Moreover, after invoking the function a few times, we obtain a different segmentation result since the initial estimate of the thresholds are different. 
-
-The binarized image with threshold at convergence of $\mathbf{137.5802}$ and the histogram of ``angiogram.tif'' image with the threshold at convergence of $\mathbf{137.5802}$ shows in Figure~\ref{fig:q2-2}. Table~2 shows the value of the threshold at every iteration before reaching convergence.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=14cm]{q2-2.png}
-    \caption{Binarized Image and Its Histogram when Threshold at Convergence of 137.5802}
-    \label{fig:q2-2}
-\end{figure}
-
-\begin{center}
-\begin{tabular}{llr}  
-\toprule
-\multicolumn{2}{c}{Table 2} \\
-\cmidrule(r){1-2}
-Iteration   & Threshold Value \\
-\midrule
-1      & 168 \\
-2 & 137.5802 \\
-
-\bottomrule
-\label{table:q2-2}
-\end{tabular}    
-\end{center}
+Since the initial estimate of the threshold is randomly selected from the element of the image, the result of converage could be different. 
 
 \paragraph{Question 3:} Apply histogram equalization to ‘angiogram.tif’. You may choose to work with the Matlab \textbf{histeq} function. Next, apply the same thresholding algorithm to the equalized image. Compute the new threshold, and the new binarized images
 
-The binarized image with threshold at convergence of $\mathbf{105.6698}$ and the histogram of ``angiogram.tif'' image with the threshold at convergence of $\mathbf{105.6698}$ shows in Figure~\ref{fig:q3-1}. Table~3 shows the value of the threshold at every iteration before reaching convergence.
+The binarized image with threshold at convergence of $\mathbf{127.0794}$ and the histogram of ``angiogram.tif'' image with the threshold at convergence of $\mathbf{127.0794}$ shows in Figure~\ref{fig:q3-1}. Table~2 shows the value of the threshold at every iteration before reaching convergence.
 
 \begin{figure}
     \centering
-    \includegraphics[width=14cm]{q3-1.png}
-    \caption{Binarized Image and Its Histogram when Threshold at Convergence of 105.6698}
+    \includegraphics[width=14cm]{with-histogram-equalization.png}
+    \caption{(a) Binarized Image; (b) ``angiogram.tif'' Image Histogram when Threshold at Convergence of 127.0794, Red Line Marks the Threshold at Convergence; (c) Histogram of Number of Binary Values}
     \label{fig:q3-1}
 \end{figure}
 
 \begin{center}
 \begin{tabular}{llr}  
 \toprule
-\multicolumn{2}{c}{Table 3} \\
+\multicolumn{2}{c}{Table 2} \\
 \cmidrule(r){1-2}
 Iteration   & Threshold Value \\
 \midrule
@@ -144,31 +115,7 @@ Iteration   & Threshold Value \\
 \end{tabular}    
 \end{center}
 
-Moreover, after invoking the function a few times, we obtain a different segmentation result since the initial estimate of the thresholds are different. 
-
-The binarized image with threshold at convergence of $\mathbf{172.2672}$ and the histogram of ``angiogram.tif'' image with the threshold at convergence of $\mathbf{172.2672}$ shows in Figure~\ref{fig:q3-2}. Table~4 shows the value of the threshold at every iteration before reaching convergence.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=14cm]{q3-2.png}
-    \caption{Binarized Image and Its Histogram when Threshold at Convergence of 172.2672}
-    \label{fig:q3-2}
-\end{figure}
-
-\begin{center}
-\begin{tabular}{llr}  
-\toprule
-\multicolumn{2}{c}{Table 4} \\
-\cmidrule(r){1-2}
-Iteration   & Threshold Value \\
-\midrule
-1 & 202 \\
-2 & 172.2672 \\
-
-\bottomrule
-\label{table:q2-2}
-\end{tabular}    
-\end{center}
+Since we pre-prcess the image using the Histogram Equalizationto, the threshould of converage always converages to the same number, unlike the case without Histogram Equalization. Moreover, we can see the histogram of number of binary values are roughly the same. 
 
 \paragraph{Question 4: } Compare and discuss the results obtained by optimal thresholding on the original image, and on the image pre-processed with histogram equalization.
 \end{document}
