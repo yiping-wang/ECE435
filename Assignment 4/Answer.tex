@@ -42,6 +42,11 @@
 \author{Yiping Wang V00894385}
 \maketitle
 
+\paragraph{Question 1: } Implement the algorithm on Basic Global Thresholding described in L8.1. The implementation of your algorithm needs to specify a tolerance percentage below which the thresholds T(i+1) and T(i) are considered identical. This tolerance parameter needs to be an input for your function.
+
+\paragraph{Answer: } Please see the ``basic\_global\_thresholding.m'' inside this folder. 
+
+
 \paragraph{Question 2:} Test the algorithm on the image ``angiogram.tif''. You will provide the following results:
 \begin{enumerate}
     \item The binarized image with the value of the threshold at convergence
@@ -123,17 +128,18 @@ Since we pre-process the image using the Histogram Equalizationtion, the thresho
 
 \paragraph{Answer: }
 
-The optimal thresholding and histogram equalization of ``angiogram.tif'' are shown in Figure~\ref{fig:com}. 
+The optimal thresholding on without and with histogram equalization of ``angiogram.tif'' are shown in Figure~\ref{fig:com}. 
 
-The Ostu Method assumes that the image contains two classes of pixels following bi-modal histogram, it then calculates the optimum threshold separating the two classes so that their within-group variance is minimal.
+The Ostu Method assumes that the image contains two classes of pixels following bi-modal histogram, it then calculates the optimum threshold separating the two classes so that their within-group variance is minimal. The Histogram Equalization is used to enhance contrast.
 
-The Histogram Equalization is used to enhance contrast.
+Without Histogram Equalization, the global threshold using Otsu's method is $\mathbf{0.4157}$. With Histogram Equalization, the global threshold using Otsu's method is $\mathbf{0.4980}$, which is very close to 0.50. From 
+Figure~\ref{fig:com} (b), we can observe the white area is larger than Figure~\ref{fig:com} (a), especially in the left region since the Histogram Equalization attempts to balance the distribution of the gray values inside the image. Moreover, from Figure~\ref{fig:q2-1} or Figure~\ref{fig:q3-1}, we know the histogram of input image is not a bi-model histogram, which explains why the Ostu's Method does not perform very well in this specific image.
 
 \begin{figure}%
 	\centering
-	\subfloat[Without Histogram Equalization]{{\includegraphics[width=7cm]{no-hist-equ.png}} }%
+	\subfloat[Without Histogram Equalization]{{\includegraphics[width=7cm]{ostu-without-hist-equ.png}} }%
 	\qquad
-	\subfloat[With Histogram Equalization]{{\includegraphics[width=7cm]{after-hist-equ.png}} }%
+	\subfloat[With Histogram Equalization]{{\includegraphics[width=7cm]{ostu-with-hist-equ.png}} }%
 	\caption{Results of Optiomal Thresholding Without and With Histogram Equalization}%
 	\label{fig:com}%
 \end{figure}
