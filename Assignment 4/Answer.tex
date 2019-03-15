@@ -14,7 +14,7 @@
 \usepackage{lipsum}
 \usepackage{amsmath}
 \usepackage{booktabs}
-
+\usepackage{subfig}
 %% Paper format
 \usepackage{geometry}
 \geometry{
@@ -57,7 +57,7 @@ The binarized image with threshold at convergence of $\mathbf{103.9122}$, the hi
 \begin{figure}
     \centering
     \includegraphics[width=14cm]{without-histogram-equalization.png}
-    \caption{(a) Binarized Image; (b) ``angiogram.tif'' Image Histogram when Threshold at Convergence of 103.9122, Red Line Marks the Threshold at Convergence; (c) Histogram of Number of Binary Values}
+    \caption{(a) Binarized Image; (b)  ``angiogram.tif'' Image Histogram; Red Line Marks the Threshold at Convergence of 103.9122; (c) Histogram of Number of Binary Values}
     \label{fig:q2-1}
 \end{figure}
 
@@ -84,14 +84,16 @@ Iteration   & Threshold Value \\
 
 Since the initial estimate of the threshold is randomly selected from the element of the image, the result of converage could be different. 
 
-\paragraph{Question 3:} Apply histogram equalization to ‘angiogram.tif’. You may choose to work with the Matlab \textbf{histeq} function. Next, apply the same thresholding algorithm to the equalized image. Compute the new threshold, and the new binarized images
+\paragraph{Question 3:} Apply histogram equalization to ``angiogram.tif''. You may choose to work with the Matlab \textbf{histeq} function. Next, apply the same thresholding algorithm to the equalized image. Compute the new threshold, and the new binarized images
+
+\paragraph{Answer:} The following results are obtained when tolerance is set to $\mathbf{10^{-8}}$. The initial estimate of the threshold is randomly selected from the element of the image.  
 
 The binarized image with threshold at convergence of $\mathbf{127.0794}$ and the histogram of ``angiogram.tif'' image with the threshold at convergence of $\mathbf{127.0794}$ shows in Figure~\ref{fig:q3-1}. Table~2 shows the value of the threshold at every iteration before reaching convergence.
 
 \begin{figure}
     \centering
     \includegraphics[width=14cm]{with-histogram-equalization.png}
-    \caption{(a) Binarized Image; (b) ``angiogram.tif'' Image Histogram when Threshold at Convergence of 127.0794, Red Line Marks the Threshold at Convergence; (c) Histogram of Number of Binary Values}
+    \caption{(a) Binarized Image; (b) ``angiogram.tif'' Image Histogram; Red Line Marks the Threshold at Convergence of 127.0794; (c) Histogram of Number of Binary Values}
     \label{fig:q3-1}
 \end{figure}
 
@@ -115,9 +117,27 @@ Iteration   & Threshold Value \\
 \end{tabular}    
 \end{center}
 
-Since we pre-prcess the image using the Histogram Equalizationto, the threshould of converage always converages to the same number, unlike the case without Histogram Equalization. Moreover, we can see the histogram of number of binary values are roughly the same. 
+Since we pre-process the image using the Histogram Equalizationtion, the threshould of converage always converages to the same number, unlike the case without Histogram Equalization. Moreover, we can observe that the two bins of the binary values in the histogram (Figure~\ref{fig:q3-1} (c)) are roughly the same. 
 
 \paragraph{Question 4: } Compare and discuss the results obtained by optimal thresholding on the original image, and on the image pre-processed with histogram equalization.
+
+\paragraph{Answer: }
+
+The optimal thresholding and histogram equalization of ``angiogram.tif'' are shown in Figure~\ref{fig:com}. 
+
+The Ostu Method assumes that the image contains two classes of pixels following bi-modal histogram, it then calculates the optimum threshold separating the two classes so that their within-group variance is minimal.
+
+The Histogram Equalization is used to enhance contrast.
+
+\begin{figure}%
+	\centering
+	\subfloat[Without Histogram Equalization]{{\includegraphics[width=7cm]{no-hist-equ.png}} }%
+	\qquad
+	\subfloat[With Histogram Equalization]{{\includegraphics[width=7cm]{after-hist-equ.png}} }%
+	\caption{Results of Optiomal Thresholding Without and With Histogram Equalization}%
+	\label{fig:com}%
+\end{figure}
+
 \end{document}
 
 

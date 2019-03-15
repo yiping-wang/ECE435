@@ -1,18 +1,21 @@
-function basic_global_thresholding(img, tolerance, display_img_hist, hist_eq, display_binary_count_hist)
+function basic_global_thresholding(img, tolerance, hist_eq, display_img_hist, display_binary_count_hist)
 if nargin < 3
-    display_binary_count_hist = false;
-    display_img_hist = false;
-    hist_eq = false;
+    display_binary_count_hist = true;
+    display_img_hist = true;
+    % Preprocess image using histogram equalization as default
+    hist_eq = true;
 end
 
 if nargin < 4
-    display_binary_count_hist = false;
-    hist_eq = false;
+    display_binary_count_hist = true;
+    display_img_hist = true;
 end
 
 if nargin < 5
-    display_binary_count_hist = false;
+    display_binary_count_hist = true;
 end
+
+original_img = img;
 
 if hist_eq
     input_img = histeq(img);
@@ -33,6 +36,7 @@ elseif new_T == 0
     new_T = new_T + 1;
 end
 
+% Basic Global Thresholding Algorithm
 mu1 = mean(img(img > new_T));
 mu2 = mean(img(img <= new_T));
 
@@ -65,7 +69,7 @@ if display_img_hist
     imshow(img);
     title(strcat('Threshold at Convergence: ', num2str(new_T)), 'FontSize', 7);
     subplot(1, num_img, 2);
-    imhist(input_img);
+    imhist(original_img);
     hold on;
     line([new_T, new_T], ylim, 'LineWidth', 1, 'Color', 'r');
 else
