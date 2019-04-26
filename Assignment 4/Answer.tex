@@ -130,7 +130,7 @@ Since we pre-process the image using the Histogram Equalizationtion, the thresho
 
 The optimal thresholding on without and with histogram equalization of ``angiogram.tif'' are shown in Figure~\ref{fig:com}. 
 
-The Ostu Method assumes that the image contains two classes of pixels following bi-modal histogram, it then calculates the optimum threshold separating the two classes so that their within-group variance is minimal. The Histogram Equalization is used to enhance contrast.
+The Ostu's Method assumes that the image contains two classes of pixels following bi-modal histogram, it then calculates the optimum threshold separating the two classes so that their within-group variance is minimal. The Histogram Equalization is used to enhance contrast.
 
 Without Histogram Equalization, the global threshold using Otsu's method is $\mathbf{0.4157}$. With Histogram Equalization, the global threshold using Otsu's method is $\mathbf{0.4980}$, which is very close to 0.50. From 
 Figure~\ref{fig:com} (b), we can observe the white area is larger than Figure~\ref{fig:com} (a), especially in the left region since the Histogram Equalization attempts to balance the distribution of the gray values inside the image. Moreover, from Figure~\ref{fig:q2-1} or Figure~\ref{fig:q3-1}, we know the histogram of input image is not a bi-model histogram, which explains why the Ostu's Method does not perform very well in this specific image.

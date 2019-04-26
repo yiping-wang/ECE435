@@ -1,0 +1,93 @@
+%% -*- mode: latex; mode: flyspell -*-
+\documentclass[12pt, letter]{article}
+
+%% Class name and Assignment number
+%%
+\newcommand{\courseName}{ECE435 Medical Image Processing}
+\newcommand{\assignName}{Project Proposal}
+    
+%% Packages
+\usepackage{amsmath,amsfonts,amssymb,amsthm,dsfont}
+\usepackage{graphicx}
+\usepackage[bookmarks=false]{hyperref}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{subfig}
+
+\lstset{
+    showstringspaces=false,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color[grey]{0.6},
+    stringstyle=\color[RGB]{255,150,75}
+}
+
+\newcommand{\inlinecode}[2]{\colorbox{lightgray}{\lstinline[language=#1]$#2$}}
+
+%% Paper format
+\usepackage{geometry}
+\geometry{
+    letterpaper,
+    %% total={216mm,279mm}, %< NSERC size
+    margin=2.00cm,     %< default
+    %% margin=1.87cm,       %< NSERC tightest
+}
+
+%% Headers and footers
+\usepackage[explicit]{titlesec}
+\newpagestyle{titlesec_assignment}{
+  \sethead{\courseName}{}{\assignName}\setfoot{}{\thepage}{}
+  \headrule
+  %% \footrule
+}
+
+\begin{document}
+%% Set header and footer
+\pagestyle{titlesec_assignment}
+
+%% Title
+\title{\courseName\\\assignName}
+\author{Brian Pattie, Yiping Wang}
+\maketitle
+
+%% Abstract
+%\abstract{The project proposal is to be submitted as one pdf file, containing: }
+
+%% Content
+
+\section{Problem Formulation}
+
+Pap smears are a common test for detecting cervical cancer in its early stages.  Cervical cancer is most treatable in its early stages, thus effective screening for detect pre-cancerous cells is of high importance.  Automated segmentation and analysis of both the individual cytoplasm and nuclei from overlapping cells in Pap smears would improve detection rates but is difficult to achieve.  Features relating to the size and shape of the cytoplasm are vital to accurately classifying abnormal cells, but the poor contrast of cytoplasm makes it difficult to identify cell boundaries, especially when cells are clustered and overlapped together on the slide.  These issues make the accurate segmentation of cells one of the greatest hurdles in achieving effective automated Pap screening.  The aim of this project is to implement an algorithm from existing literature that can accurately segment the cytoplasm and nuclei of overlapping cells in a Pap smear.
+
+\section{Team Composition}
+We are a team of two students from Software Engineering and Computer Science Department with interests and enthusiasm for Computer Vision and Medical Image Processing.
+
+\section{Selected Dataset}
+The Cell Segmentation in Cervical Cytology dataset, ISBI 2014, provides 16 Extended Depth of Field (EDF) real cervical cytology images and 945 synthetic images. The dataset provides a relatively small number of real cervical cytology images to train and test the proposed algorithms due to the privacy laws which makes it difficult to collect them. However, it provides enough high-quality training and testing synthetic images, of 45 training and 90 testing images are annotated by the expert. The rest of 810 synthetic data will be used for evaluation. 
+
+\section{Proposed Paper}
+The chosen paper, Automated Nucleus and Cytoplasm Segmentation of Overlapping Cervical Cells \cite{main}, was published under a respected source, the 2013 MICCAI conference.  According to Google Scholar, it has been cited 64 times, indicating that the paper’s contribution has been of use to the wider medical imaging community.  While only the paper’s main contribution is described in mathematical detail, most of the steps are adequately explained by the references, so the required external reading should be manageable.  Visual inspection of the provided examples shows that the algorithm can generate segments that closely match cytoplasm borders.  Overall the paper appears to be manageable within our limited development time while providing a challenging learning experience.
+
+\section{Summary}
+
+The algorithms proposed in the paper aims at segmenting both the cytoplasm and nucleus of each overlapping cell. The proposed method contains two stages. First, scene segmentation, comprising two sub-stages: 
+
+\begin{enumerate}
+    \item  Segmentation of cell clumps separates individual cells and regions of overlapping cells which will require more intensive algorithms for segmenting their cell boundaries.  It consists of 3 steps:
+\begin{enumerate}
+    \item A quick shift algorithm is used create a Super-pixel Map, labeled with the mode grey level of pixels within the super-pixel.
+    \item An edge detector is run on the super-pixel map to identify clean edges.
+    \item An unsupervised binary classifier, initialized on the convex hull created by the connected Super-pixels, classifies regions as “Background” or “Cell Clump”
+\end{enumerate}
+    \item Nuclei are detected and segmented using a Maximally Stable Extremal Regions (MSER) algorithm.
+\end{enumerate}
+Second, cell segmentation, assumes that each nucleus detected in step 1 represents an individual cell that forms a separate joint level set function.  
+The joint level set function that generates the final overlapping cell segmentation minimizes an energy function that is constrained by the individual contour area and length, an ellipsoidal shape prior, and finally the area and gray values within the overlapping regions.
+
+Our team will implement the above algorithm and add our improvement techniques and apply the MATLAB program to the ISBI 2014 dataset.  
+\bibliographystyle{plain}
+\bibliography{citation-260127853}
+
+\end{document}
